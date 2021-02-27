@@ -1,7 +1,7 @@
 import json
 import os
 import time
-import plagiarism
+from plagiarism import *
 from waitress import serve
 
 from flask import Flask, redirect, render_template, request, url_for
@@ -19,7 +19,7 @@ def homeRoute():
 @app.route("/input", methods=['POST'])
 def inputValues():
        userInput = request.get_json(silent=True)
-       userOutput = plagiarism(userInput)
+       userOutput = plagiarism.givejson(userInput)
        return userInput
 
 
@@ -27,7 +27,7 @@ def inputValues():
 def outputValues():
    if(userOutput != 0):
       return userOutput
-   return "Hello"
+   return "Value has not been computed"
 
 
 if __name__ == "__main__":
