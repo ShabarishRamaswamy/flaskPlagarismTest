@@ -8,14 +8,14 @@ import spacy
 from app import *
 
 
-def givejson():
+def givejson(jss = app.inputValues()):
     nlp = spacy.load('en_core_web_md')
     final = {}
 
     d2v_model = doc2vec.Doc2Vec.load('d2v.model')
     extras = set(stopwords.words('english'))
 
-    jss = app.inputValues() #json
+    #jss = app.inputValues() #json
     #jss = {"A":"Hello,it's me","B":"Hi, how are you?","C":"Greetings!"}
 
     for i in range(len(jss)):
