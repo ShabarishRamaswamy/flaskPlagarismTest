@@ -30,7 +30,7 @@ def givejson(jss):
                 doc1 = nlp(''.join(map(str,f1)))    
                 doc2 = nlp(''.join(map(str,f2)))
                 spacysim = doc1.similarity(doc2)
-                #print(spacysim)
+                #print(spacysim
 
                 vec1 = d2v_model.infer_vector(first_text.split())
                 vec2 = d2v_model.infer_vector(second_text.split())
