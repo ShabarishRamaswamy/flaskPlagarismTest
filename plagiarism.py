@@ -27,7 +27,7 @@ print(spacysim)
 vec1 = d2v_model.infer_vector(first_text.split())
 vec2 = d2v_model.infer_vector(second_text.split())
 
-d2vsim = d2v_model.n_similarity(vec1, vec2)
+d2vsim = spatial.distance.cosine(vec1, vec2)
 print(d2vsim)
 
 if (70*d2vsim + 30*spacysim) <= 100:
