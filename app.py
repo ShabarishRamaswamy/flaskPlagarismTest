@@ -8,7 +8,7 @@ from flask import Flask, redirect, render_template, request, url_for
 app = Flask(__name__)
 app.debug = True
 
-userOutput = 0
+userOutput = {}
 # Home Route
 @app.route('/')
 def homeRoute():
