@@ -1,7 +1,7 @@
 import json
 import os
 import time
-# import plagiarism
+import plagiarism
 from waitress import serve
 
 from flask import Flask, redirect, render_template, request, url_for
@@ -9,6 +9,7 @@ from flask import Flask, redirect, render_template, request, url_for
 app = Flask(__name__)
 app.debug = True
 
+userOutput = 0
 # Home Route
 @app.route('/')
 def homeRoute():
@@ -18,15 +19,14 @@ def homeRoute():
 @app.route("/input", methods=['POST'])
 def inputValues():
        userInput = request.get_json(silent=True)
-       print(userInput)
+       userOutput = plagiarism(userInput)
        return userInput
 
 
 @app.route("/output", methods=['GET'])
 def outputValues():
-   userOutput = 0
-   if(userOutput):
-      return "Hello"
+   if(userOutput != 0):
+      return userOutput
    return "Hello"
 
 
