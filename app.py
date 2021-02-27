@@ -20,13 +20,13 @@ def inputValues():
        from plagiarism import givejson
        userInput = request.get_json(silent=True)
        userOutput = givejson(userInput)
-       return userInput
+       return json.dump(userInput)
 
 
 @app.route("/output", methods=['GET'])
 def outputValues():
    if(userOutput != 0):
-      return userOutput
+      return json.dump(userOutput)
    return "Value has not been computed"
 
 
