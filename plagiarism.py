@@ -8,7 +8,7 @@ import spacy
 
 
 def givejson(jss):
-    nlp = spacy.load('en_core_web_md')
+    nlp = spacy.load('en_core_web_sm')
     final = {}
 
     d2v_model = doc2vec.Doc2Vec.load('d2v.model')
