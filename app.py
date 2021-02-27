@@ -1,7 +1,6 @@
 import json
 import os
 import time
-from plagiarism import *
 from waitress import serve
 
 from flask import Flask, redirect, render_template, request, url_for
@@ -18,8 +17,9 @@ def homeRoute():
 # Values Input Route
 @app.route("/input", methods=['POST'])
 def inputValues():
+       from plagiarism import givejson
        userInput = request.get_json(silent=True)
-       userOutput = plagiarism.givejson(userInput)
+       userOutput = givejson(userInput)
        return userInput
 
 
@@ -31,6 +31,8 @@ def outputValues():
 
 
 if __name__ == "__main__":
-      #  port = process.env.PORT || 8080
-       serve(app, host="0.0.0.0", port = 8080)
-       
+       port = os.environ.get('PORT')
+       if(port):
+               serve(app)
+       else:
+         serve(app, host="0.0.0.0", port = 8080)
