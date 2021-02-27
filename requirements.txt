@@ -1,7 +1,12 @@
 Flask
-spacy
 gensim
 nltk
 scipy
 waitress
+<<<<<<< HEAD
 gunicorn
+=======
+gunicorn
+spacy>=2.2.0,<2.3.0
+https://github.com/explosion/spacy-models/releases/download/en_core_web_md-2.2.0/en_core_web_md-2.2.0.tar.gz#egg=en_core_web_md==2.2.0
+>>>>>>> 7f7aea847e79e2d99a01c150c0e7ee5b7539ca3d
