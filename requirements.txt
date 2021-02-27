@@ -5,4 +5,3 @@ nltk
 scipy
 waitress
 gunicorn
-https://github.com/explosion/spacy-models/releases/download/en_core_web_md-1.2.0/en_vectors_web_lg-1.2.0.tar.gz
