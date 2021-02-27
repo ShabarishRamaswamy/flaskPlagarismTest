@@ -1,4 +1,6 @@
 Flask
 spacy
 gensim
-gunicorn
+nltk
+scipy
+waitress
