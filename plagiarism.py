@@ -10,13 +10,11 @@ import spacy
 def givejson(jss):
     nlp = spacy.load('en_core_web_md')
     final = {}
-
-    d2v_model = doc2vec.Doc2Vec.load('d2v.model')
+    #d2v_model = doc2vec.Doc2Vec.load('d2v.model')
     extras = set(stopwords.words('english'))
-    #jss = {"A":"Hello,it's me","B":"Hi, how are you?","C":"Greetings!"}
 
     for i in range(len(jss)):
-        l1 = []
+        l1 = ''
         for j in range(len(jss)):
             if i!=j:
                 first_text = jss[list(jss.keys())[i]]
@@ -30,24 +28,24 @@ def givejson(jss):
                 doc1 = nlp(''.join(map(str,f1)))    
                 doc2 = nlp(''.join(map(str,f2)))
                 spacysim = doc1.similarity(doc2)
-                #print(spacysim
+                #print(spacysim)
 
-                vec1 = d2v_model.infer_vector(first_text.split())
-                vec2 = d2v_model.infer_vector(second_text.split())
+                #vec1 = d2v_model.infer_vector(first_text.split())
+                #vec2 = d2v_model.infer_vector(second_text.split())
 
-                d2vsim = spatial.distance.cosine(vec1, vec2)
+                #d2vsim = spatial.distance.cosine(vec1, vec2)
                 #print(d2vsim)
 
                 if 100*spacysim==100:
-                    l1.append(spacysim*100)
-                elif 100*d2vsim==100:
-                    l1.append(d2vsim*100)
-                elif (70*d2vsim + 30*spacysim) <= 100:
-                    l1.append(round(70*d2vsim + 30*spacysim))
-                elif 100*spacysim>=80:
-                    l1.append(round(spacysim*100))
-                elif 100*d2vsim<=100:
-                    l1.append(round(d2vsim*100))
+                    l1=l1+" "+str(spacysim*100)+"%"
+                #elif 100*d2vsim==100:
+                 #   l1.append(d2vsim*100)
+                #elif (70*d2vsim + 30*spacysim) <= 100:
+                 #   l1.append(round(70*d2vsim + 30*spacysim))
+                else:
+                    l1=l1+" "+str(round(spacysim*100))+"%"
+                #elif 100*d2vsim<=100:
+                 #   l1.append(round(d2vsim*100))
         final[first_text]=l1
 
     #print(final)
