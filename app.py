@@ -20,19 +20,20 @@ def inputValues():
        from plagiarism import givejson
        userInput = request.get_json(silent=True)
        userOutput = givejson(userInput)
-       return json.dump(userInput)
+       l=''
+       for x,y in userOutput.items():
+           l = l +" "+x+"\t"+y+" "+"\n"
+       if not userInput == False:
+           return l
 
 
 @app.route("/output", methods=['GET'])
 def outputValues():
+   k = inputValues()
    if(userOutput != 0):
-      return json.dump(userOutput)
+      return k
    return "Value has not been computed"
 
 
 if __name__ == "__main__":
-       port = os.environ.get('PORT')
-       if(port):
-               serve(app)
-       else:
-         serve(app, host="0.0.0.0", port = 8080)
+       app.run()
