@@ -1,1 +1,1 @@
-web: gunicorn app:app && python dv2model.py
+web: gunicorn app:app
